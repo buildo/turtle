@@ -1,20 +1,20 @@
-## Prerequisites
-
-### Get CocoaPods
-```
-[sudo] gem install cocoapods
-``
-
 ## How to
 
-Install dependencies with
-```shell
-pod install
-```
+- get CocoaPods
 
-Then open `turtle-ios.xcworkspace` (**not to be confused with `turtle.xcodeproj`**)
+  ```sh
+  [sudo] gem install cocoapods
+  ```
 
-Open `Config.swift` and adjust the parameters to your needs
+- install dependencies with
+
+  ```shell
+  pod install
+   ```
+
+- open `turtle-ios.xcworkspace` (**not to be confused with `turtle.xcodeproj`**)
+
+- open `Config.swift` and adjust the parameters to your needs
 
 | parameter | defaultValue | description |
 |-----------|:------------:|-------------|
