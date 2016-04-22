@@ -21,10 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSLog("Document Path: %@", documentsPath)
     #endif
     
-    EVURLCache.LOGGING = Config.cacheLogging
-    EVURLCache.MAX_FILE_SIZE = Config.cacheMaxFileSize
-    EVURLCache.MAX_CACHE_SIZE = Config.cacheMaxCacheSize
-    EVURLCache.activate()
+    if (Config.enableCaching) {
+      EVURLCache.LOGGING = Config.cacheLogging
+      EVURLCache.MAX_FILE_SIZE = Config.cacheMaxFileSize
+      EVURLCache.MAX_CACHE_SIZE = Config.cacheMaxCacheSize
+      EVURLCache.activate()
+    }
     
     // wait for window.rootViewController to instantiate
     delay(0) {

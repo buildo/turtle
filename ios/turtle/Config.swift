@@ -16,6 +16,7 @@ class Config {
   static let deviceTokenKey = "registrationid"
   
   // EVURLCache config
+  static let enableCaching = true
   #if DEBUG
     static let cacheLogging = true
   #else
