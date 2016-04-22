@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (3.3.1)
+  - EVURLCache (2.4.0):
+    - ReachabilitySwift
+  - ReachabilitySwift (2.3.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.3.1)
+  - EVURLCache (~> 2.4.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  EVURLCache: dc397ba4e4359d93763c57b2a59b66927a9cdd37
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
+
+COCOAPODS: 0.39.0
