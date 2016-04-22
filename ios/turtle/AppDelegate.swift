@@ -62,9 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let cachePath = documentsPath.stringByAppendingString("/Cache/")
     do {
       try NSFileManager.defaultManager().removeItemAtPath(cachePath)
+      refreshURL()
     } catch {
-      print(error)
       NSLog("Couldn't delete directory at path %@", cachePath)
+      refreshURL()
     }
   }
   
@@ -74,6 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSLog("visiting %@", url)
       let request = NSMutableURLRequest(URL: url)
       webVC.webView.loadRequest(request)
+    }
+  }
+  
+  private func refreshURL() {
+    if let webVC = self.window?.rootViewController as? WebViewController,
+      let request = webVC.webView.request,
+      let url = request.URL {
+        NSLog("refreshing %@", url)
+        webVC.webView.loadRequest(request)
     }
   }
 
