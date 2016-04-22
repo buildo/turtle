@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-    let token = NSString(data: deviceToken, encoding: NSUTF8StringEncoding)!
+    let token = deviceToken.description
   
     let params = [
       Config.deviceTokenKey: token
