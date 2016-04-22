@@ -10,11 +10,9 @@ import UIKit
 import EVURLCache
 import Alamofire
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
@@ -38,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application.registerUserNotificationSettings(settings)
     application.registerForRemoteNotifications()
     
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.deleteCache), name: "DeviceDidShake", object: nil)
+    
     return true
   }
   
@@ -57,13 +57,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
+  func deleteCache() {
+    let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+    let cachePath = documentsPath.stringByAppendingString("/Cache/")
+    do {
+      try NSFileManager.defaultManager().removeItemAtPath(cachePath)
+    } catch {
+      print(error)
+      NSLog("Couldn't delete directory at path %@", cachePath)
+    }
+  }
+  
   private func navigateToURL(urlString: String) {
     if let webVC = self.window?.rootViewController as? WebViewController,
       let url = NSURL(string: urlString) {
-      webVC.webView.loadRequest(NSURLRequest(URL: url))
+      NSLog("visiting %@", url)
+      let request = NSMutableURLRequest(URL: url)
+      webVC.webView.loadRequest(request)
     }
   }
-
 
 }
 
